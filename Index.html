@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTROL DE LUZES DA CASA</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <header>
+        <h1>CONTROL DE LUZES DA CASA</h1>
+    </header>
+    <main class="container">
+        <div id="lightStatus" class="light-off"></div>
+        <button id="ligarBtn" class="btn ligar" onclick="ledOn()">Ligar</button>
+        <button id="desligarBtn" class="btn desligar" onclick="ledOff()">Desligar</button>
+    </main>
+    <footer>
+        <strong>Elias Magaia</strong>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBl0pi4UHZoYIMWAdsFEqumm7QmeROjWVg",
+            authDomain: "lampadas-2da52.firebaseapp.com",
+            databaseURL: "https://lampadas-2da52-default-rtdb.firebaseio.com/",
+            projectId: "lampadas-2da52",
+            storageBucket: "lampadas-2da52.appspot.com",
+            messagingSenderId: "56486693403",
+            appId: "1:56486693403:web:c239cadad1bcb2cd6786be",
+            measurementId: "G-MJ0CJ89VFK"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function ledOn() {
+            firebase.database().ref("Deter").set({
+                estado: "LIGADA"
+            });
+        }
+
+        function ledOff() {
+            firebase.database().ref("Deter").set({
+                estado: "DESLIGADA"
+            });
+        }
+    </script>
+<script src="script2.js"></script>
+</body>
+</html>
